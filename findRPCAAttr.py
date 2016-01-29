@@ -1,10 +1,12 @@
+from AttributeDictionary import AttributeDictionary
+
 # Reads in data returns (attrNames, rowData)
 def scanInData(filename, rows=1000):
     f = open(filename, 'r')
    
     # Find attribute names
     attr = f.readline().split(',')
-    attr[0] = "UID"
+    attr[0] = "UNITID"
 
     # Find row data
     data = []
@@ -38,8 +40,19 @@ def findSuitable(data, tolerance = 0.5):
 
     return suitable
 
+def printDescrips(keys):
+    ad = AttributeDictionary("CollegeScorecard_Raw_Data/dataDictionary.csv")
+    for k in keys:
+        try:
+            msg = ad.decode(k)
+        except KeyError:
+            msg = "NOT FOUND"
+        print k, ": ", msg
+
 if __name__=='__main__':
     attr, data = scanInData('CollegeScorecard_Raw_Data/cohorts.csv', 1000)
     suitable = findSuitable(data)
     results = [attr[s] for s in suitable]
-    print ", ".join(results)
+    # print ", ".join(results)
+    printDescrips(results)
+

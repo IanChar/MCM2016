@@ -1,0 +1,28 @@
+UNITID :  Unit ID for institution
+OPEID :  8-digit OPE ID for institution
+opeid6 :  6-digit OPE ID for institution
+PREDDEG :  4        Entirely graduate-degree granting"
+CONTROL :  Control of institution
+LOCALE :  Locale of institution
+PCIP51 :  Percentage of degrees awarded in Health Professions And Related Programs.
+PCIP52 :  NOT FOUND
+UGDS :  Enrollment of undergraduate degree-seeking students
+UGDS_WHITE :  Total share of enrollment of undergraduate degree-seeking students who are white
+UGDS_BLACK :  Total share of enrollment of undergraduate degree-seeking students who are black
+UGDS_HISP :  Total share of enrollment of undergraduate degree-seeking students who are Hispanic
+UGDS_ASIAN :  Total share of enrollment of undergraduate degree-seeking students who are Asian
+UGDS_AIAN :  Total share of enrollment of undergraduate degree-seeking students who are American Indian/Alaska Native
+UGDS_NHPI :  Total share of enrollment of undergraduate degree-seeking students who are Native Hawaiian/Pacific Islander
+UGDS_2MOR :  Total share of enrollment of undergraduate degree-seeking students who are two or more races
+UGDS_NRA :  Total share of enrollment of undergraduate degree-seeking students who are non-resident aliens
+UGDS_UNKN :  Total share of enrollment of undergraduate degree-seeking students whose race is unknown
+PPTUG_EF :  NOT FOUND
+PCTPELL :  Percentage of undergraduates who receive a Pell Grant
+PCTFLOAN :  Percent of all federal undergraduate students receiving a federal student loan
+UG25abv :  Percentage of undergraduates aged 25 and above
+GRAD_DEBT_MDN_SUPP :  NOT FOUND
+GRAD_DEBT_MDN10YR_SUPP :  NOT FOUND
+RPY_3YR_RT_SUPP :  NOT FOUND
+md_earn_wne_p10 :  Median earnings of students working and not enrolled 10 years after entry
+gt_25k_p6
+:  NOT FOUND
