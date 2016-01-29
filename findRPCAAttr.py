@@ -12,7 +12,7 @@ def scanInData(filename, rows=1000):
     data = []
     for _ in xrange(rows):
         data.append(f.readline().split(','))
-
+    f.close()
     return (attr, data)
 
 # Decides which columns not good for RPCA and gives index of attr
@@ -53,6 +53,5 @@ if __name__=='__main__':
     attr, data = scanInData('CollegeScorecard_Raw_Data/cohorts.csv', 1000)
     suitable = findSuitable(data)
     results = [attr[s] for s in suitable]
-    # print ", ".join(results)
     printDescrips(results)
 
