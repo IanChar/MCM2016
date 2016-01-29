@@ -7,6 +7,7 @@ class AttributeDictionary(object):
             # If string is not empty
             if len(tmp) >= 5 and not not tmp[4]:
                 self.dictionary[tmp[4]] = tmp[0]
+        f.close()
         
     def decode(self, key):
         return self.dictionary[key]
