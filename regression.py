@@ -77,6 +77,8 @@ class Regression:
         for key, value in fullDict.items():
             if key not in set(checked):
                 m.append(list(value) + [-1, -1, -1, -1])
+                donationDict[key] = (count)
+                count = count + 1
 
         sio.savemat('BooIsAFuckBoiii.mat', {'a_dict': np.matrix(m)})
 
