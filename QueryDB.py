@@ -2,6 +2,8 @@ import mysql.connector
 
 USERNAME = 'usr'
 PASSWORD = ''
+
+# COEFS FOR DONATED SCHOOLS ONLYYYYYY
 GRAD_2YR = 13
 GRAD_3YR = 17
 GRAD_4YR = 19
@@ -15,6 +17,7 @@ def getDonatedSchools(yearRange = 5):
              " GROUP BY name")
     cursor.execute(query)
     schools = [(name, yr, amount) for name, yr, amount in cursor]
+    print schools
     res = {}
     for s in schools:
         query = ("SELECT * FROM TimeSlice NATURAL JOIN"
@@ -25,7 +28,7 @@ def getDonatedSchools(yearRange = 5):
         finList = []
         for c in cursor:
             finList.append(list(c)[2:-2])
-        res[str(s[0])] = (amount, finList)
+        res[str(s[0])] = (s[2], finList)
     cursor.close()
     cnx.close()
     return res
@@ -46,6 +49,6 @@ def getAllRecent():
 
 if __name__ == '__main__':
     res = getDonatedSchools()
+    print res
     # print map(lambda x: x[GRAD_4YR], res['Harvard University'][1])
     al = getAllRecent()
-    print al['Harvard University']
