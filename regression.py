@@ -78,7 +78,6 @@ class Regression:
             if key not in set(checked):
                 m.append(list(value) + [-1, -1, -1, -1])
 
-        print m
         sio.savemat('BooIsAFuckBoiii.mat', {'a_dict': np.matrix(m)})
 
 if __name__ == "__main__":
