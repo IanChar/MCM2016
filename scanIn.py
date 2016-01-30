@@ -1,7 +1,7 @@
 import mysql.connector
 from lumina import Lumina
 
-REPLACEMENT = -1.0
+REPLACEMENT = 0.0
 STATIC_ATTRS = ["UNITID", "INSTNM", "CITY", "STABBR"]
 USERNAME = 'usr'
 PASSWORD = ''

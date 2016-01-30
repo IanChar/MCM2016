@@ -2,8 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import QueryDB as q
 import scipy.io as sio
+import json
 
 from scipy import stats
+
+COVER = 0.0
 
 class Regression:
 
@@ -58,6 +61,7 @@ class Regression:
     def constructMatrix(self, donations):
         fullDict = q.getAllRecent()
         donationDict = {}
+
         count = 0
         checked = []
         m = []
@@ -65,7 +69,7 @@ class Regression:
         for donation in donations:
             self.data[donation[0]][1][0].pop()
             pastGrantYear = self.data[donation[0]][1][0] + donation[1:5]
-            currentYear = list(fullDict[donation[0]]) + [-1, -1, -1, -1]
+            currentYear = list(fullDict[donation[0]]) + [COVER, COVER, COVER, COVER]
 
             m.append(pastGrantYear)
             m.append(currentYear)
@@ -74,13 +78,18 @@ class Regression:
             checked.append(donation[0])
             count = count + 2
 
+        print count
+        
         for key, value in fullDict.items():
             if key not in set(checked):
-                m.append(list(value) + [-1, -1, -1, -1])
+                m.append(list(value) + [COVER, COVER, COVER, COVER])
                 donationDict[key] = (count)
                 count = count + 1
 
-        sio.savemat('BooIsAFuckBoiii.mat', {'a_dict': np.matrix(m)})
+
+        sio.savemat('data.mat', {'a_dict': np.matrix(m)})
+        with open('dict.json', 'w') as fp:
+            json.dump(donationDict, fp)
 
 if __name__ == "__main__":
 
