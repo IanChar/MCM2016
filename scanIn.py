@@ -42,7 +42,12 @@ def scanIn(filename, dynAttrs, staticAttrs = None):
 if __name__ == '__main__':
     dyn1, stat = scanIn("CollegeScorecard_Raw_Data/MERGED2008_PP.csv",
             readSuitable(), STATIC_ATTRS)
-    print stat
-
-
+    tmp = []
+    for r in dyn1:
+        for c in r:
+            try:
+                tmp.append(float(c))
+            except:
+                pass
+    print tmp
 
