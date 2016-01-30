@@ -20,9 +20,9 @@ class Lumina:
             for i, x in enumerate(range(0, len(grantInfo), 4)):
                 self.acc = self.acc + [[str(grantName[i])] + grantInfo[x:x+4]]
 
-            for item in self.acc:
-                item = item[0:4] + self.findYears(item[4])
-                self.acc2.append(item)
+        for item in self.acc:
+            item = item[0:4] + self.findYears(item[4])
+            self.acc2.append(item)
 
         return self.acc2
 
@@ -34,3 +34,4 @@ class Lumina:
 if __name__ == '__main__':
     L = Lumina()
     print L.findGrants()
+    print len(L.findGrants())

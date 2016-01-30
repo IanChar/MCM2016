@@ -144,8 +144,9 @@ def loadAll():
 
     loadTimeSlices(dyn, 2013)
     for yr in range(1996, 2013):
-         dyn, stat = scanIn("CollegeScorecard_Raw_Data/MERGED" + str(yr) 
-                + "_PP.csv", readSuitable()) 
+         dyn = scanIn("CollegeScorecard_Raw_Data/MERGED" + str(yr) 
+                + "_PP.csv", readSuitable())
+         loadTimeSlices(dyn, yr)
     
 
     
