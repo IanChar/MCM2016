@@ -67,7 +67,7 @@ CREATE table TimeSlice (
 );
 
 CREATE table Donation (
-    grant_id    int not null,
+    grant_id    int not null auto_increment,
     unit_id     DECIMAL(8,0),
     loc_id      INT,
     start_year  INT,

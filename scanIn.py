@@ -1,4 +1,5 @@
 import mysql.connector
+from lumina import Lumina
 
 REPLACEMENT = -1.0
 STATIC_ATTRS = ["UNITID", "INSTNM", "CITY", "STABBR"]
@@ -9,6 +10,8 @@ def convert(x):
     except ValueError:
         return REPLACEMENT
 
+def dollarToNum(x):
+    return x[1:].replace(",","")
 
 def readSuitable():
     f = open("suitable.csv")
@@ -109,11 +112,49 @@ def loadTimeSlices(data, year):
     cnx.commit()
     cursor.close()
     cnx.close()
+
+def loadDonations(data):
+    cnx = mysql.connector.connect(user='usr', password='',
+            host='127.0.0.1', database="MCM")
+    cursor = cnx.cursor()
+    for d in data:
+        print d
+        lookup = ("SELECT unit_id, loc_id FROM School WHERE name=%s")
+        cursor.execute(lookup, tuple([d[0]]))
+        res = cursor.fetchone()
+        if res is None:
+            print d[0], "not found."
+        else:
+            insert = ("INSERT INTO Donation"
+                    "(unit_id, loc_id, start_year, end_year, amount)"
+                    "VALUES (%s,%s,%s,%s,%s)")
+            params = (res[0], res[1], d[4], d[5], dollarToNum(d[2]))
+            cursor.execute(insert, map(str, params))
+    cnx.commit()
+    cursor.close()
+    cnx.close()
+
+def loadAll():
+    dyn, stat = scanIn("CollegeScorecard_Raw_Data/MERGED2013_PP.csv",
+            readSuitable(), STATIC_ATTRS) 
+    loadLocations(stat)
+    loadSchools(stat)
+    l = Lumina()
+    loadDonations(l.findGrants())
+
+    loadTimeSlices(dyn, 2013)
+    for yr in range(1996, 2013):
+         dyn, stat = scanIn("CollegeScorecard_Raw_Data/MERGED" + str(yr) 
+                + "_PP.csv", readSuitable()) 
+    
+
     
 if __name__ == '__main__':
     dyn, stat = scanIn("CollegeScorecard_Raw_Data/MERGED2013_PP.csv",
             readSuitable(), STATIC_ATTRS) 
     # loadLocations(stat)
     # loadSchools(stat)
-    loadTimeSlices(dyn, 2008)
+    # loadTimeSlices(dyn, 2008)
+    l = Lumina()
+    loadDonations(l.findGrants())
 

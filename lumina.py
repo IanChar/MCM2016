@@ -31,6 +31,6 @@ class Lumina:
         item = item.split()
         return [item[2], item[6]]
 
-L = Lumina()
-
-print L.findGrants()
+if __name__ == '__main__':
+    L = Lumina()
+    print L.findGrants()
