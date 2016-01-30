@@ -1,7 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy import stats
 import QueryDB as q
+import scipy.io as sio
+
+from scipy import stats
 
 class Regression:
 
@@ -55,19 +57,30 @@ class Regression:
         return slope
 
     def constructMatrix(self, donations):
+        fullDict = q.getAllRecent()
         donationDict = {}
         count = 0
-        matrix = []
+        checked = []
+        m = []
 
         for donation in donations:
             self.data[donation[0]][1][0].pop()
-            rowInMatrix = self.data[donation[0]][1][0] + donation[2:5]
-            #donationDict[donation[0]] =
-            matrix.append(rowInMatrix)
-            matrix.append
-            donationDict[donation[0]] = (count, )
+            pastGrantYear = self.data[donation[0]][1][0] + donation[2:5]
+            currentYear = list(fullDict[donation[0]]) + [-1, -1, -1]
 
-            count = count + 1
+            m.append(pastGrantYear)
+            m.append(currentYear)
+
+            donationDict[donation[0]] = (count, count+1)
+            checked.append(donation[0])
+            count = count + 2
+
+        for key, value in fullDict.items():
+            if key not in set(checked):
+                m.append(list(value) + [-1, -1, -1])
+
+        sio.savemat('BooIsAFuckBoiii.mat', {'a_dict': np.matrix(m)})
+
 if __name__ == "__main__":
 
     R = Regression(q.getDonatedSchools())
