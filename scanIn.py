@@ -1,7 +1,14 @@
 import mysql.connector
 
-REPLACEMENT = -1
+REPLACEMENT = -1.0
 STATIC_ATTRS = ["UNITID", "INSTNM", "CITY", "STABBR"]
+
+def convert(x):
+    try:
+        return float(x)
+    except ValueError:
+        return REPLACEMENT
+
 
 def readSuitable():
     f = open("suitable.csv")
@@ -34,7 +41,7 @@ def scanIn(filename, dynAttrs, staticAttrs = None):
     dynData = []
     for l in f:
         tmp = l.split(',')
-        dynData.append([tmp[a] for a in dynIndex])
+        dynData.append([convert(tmp[a]) for a in dynIndex])
         if staticAttrs is not None:
             staticData.append([tmp[a] for a in staticIndex])
     f.close()
@@ -50,7 +57,7 @@ def loadLocations(data):
     for d in data:
         u_id, name, city, state = d
         # Insert location (fail silently if exists)
-        locInsert = ("INSERT IGNORE INTO Location"
+        locInsert = ("INSERT INTO Location"
                 "(city, state)"
                 "VALUES (%s, %s)"
                 "ON DUPLICATE KEY UPDATE city=city")
@@ -82,9 +89,31 @@ def loadSchools(data):
     cursor.close()
     cnx.close()
 
+def loadTimeSlices(data, year):
+    cnx = mysql.connector.connect(user='usr', password='',
+            host='127.0.0.1', database="MCM")
+    cursor = cnx.cursor()
+    for d in data:
+        tmp_str = ",".join(["%s" for _ in range(39)])
+        d.append(year)
+        insert = ("INSERT IGNORE INTO TimeSlice"
+                "(unit_id, ug, ug_nra, ug_unkn, ug_whitenh, ug_blacknh,"
+                " ug_api, ug_aianold, ug_hispold, tuition_in, tuition_out,"
+                " tuitfte, inexpfte, d150_l4, yr2cmp, yr2wdr, fyr2cmp,"
+                " fyr2wdr, yr3cmp, yr3wdr, yr4cmp, yr4wdr, findep, frstgen,"
+                " parms, parhs, parps, indavg, depavg, debtgrad, debtngrad,"
+                " debtdep, debtind, debtfem, debtmal, debtfrst, debtnfrst,"
+                " repaydebt, year)"
+                "VALUES (" + tmp_str + ")")
+        cursor.execute(insert, tuple(d))
+    cnx.commit()
+    cursor.close()
+    cnx.close()
     
 if __name__ == '__main__':
-    dyn1, stat = scanIn("CollegeScorecard_Raw_Data/MERGED2008_PP.csv",
+    dyn, stat = scanIn("CollegeScorecard_Raw_Data/MERGED2013_PP.csv",
             readSuitable(), STATIC_ATTRS) 
-    loadSchools(stat)
+    # loadLocations(stat)
+    # loadSchools(stat)
+    loadTimeSlices(dyn, 2008)
 
