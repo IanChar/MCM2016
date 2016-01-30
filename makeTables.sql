@@ -36,7 +36,7 @@ CREATE table TimeSlice (
     tuition_out FLOAT(7,2),
     tuitfte     FLOAT(7,2),
     inexpfte    FLOAT(7,2),
-    D150_L4     FLOAT(7,0),
+    d150_l4     FLOAT(7,0),
     yr2cmp      FLOAT(4,3),
     yr2wdr      FLOAT(4,3),
     fyr2cmp     FLOAT(4,3),
@@ -55,12 +55,13 @@ CREATE table TimeSlice (
     debtgrad    FLOAT(7,2),
     debtngrad   FLOAT(7,2),
     debtdep     FLOAT(7,2),
-    deptind     FLOAT(7,2),
+    debtind     FLOAT(7,2),
     debtfem     FLOAT(7,2),
     debtmal     FLOAT(7,2),
     debtfrst    FLOAT(7,2),
     debtnfrst   FLOAT(7,2),
     repaydebt   INT,
+    year        DECIMAL(4, 0),
     primary key (t_id),
     foreign key (unit_id) references School (unit_id) on delete cascade
 );
