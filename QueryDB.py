@@ -19,7 +19,7 @@ def getDonatedSchools(yearRange = 5):
     for s in schools:
         query = ("SELECT * FROM TimeSlice NATURAL JOIN"
                 " (SELECT * FROM School WHERE name=%s) AS skoo"
-                " WHERE year > %s and year <= %s"
+                " WHERE year >= %s and year <= %s"
                 " ORDER BY year")
         cursor.execute(query, (s[0], s[1], s[1] + yearRange))
         finList = []

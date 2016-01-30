@@ -145,7 +145,7 @@ def loadDonations(data):
 
 def loadAll():
     dyn, stat = scanIn("CollegeScorecard_Raw_Data/MERGED2013_PP.csv",
-            readSuitable(), STATIC_ATTRS) 
+            readSuitable(), STATIC_ATTRS)
     loadLocations(stat)
     loadSchools(stat)
     l = Lumina()
@@ -153,9 +153,9 @@ def loadAll():
 
     loadTimeSlices(dyn, 2013)
     for yr in range(1996, 2013):
-         dyn = scanIn("CollegeScorecard_Raw_Data/MERGED" + str(yr) 
+         dyn = scanIn("CollegeScorecard_Raw_Data/MERGED" + str(yr)
                 + "_PP.csv", readSuitable())
-         loadTimeSlices(dyn, yr) 
-    
+         loadTimeSlices(dyn, yr)
+
 if __name__ == '__main__':
     loadAll()
