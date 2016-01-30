@@ -3,6 +3,8 @@ from lumina import Lumina
 
 REPLACEMENT = -1.0
 STATIC_ATTRS = ["UNITID", "INSTNM", "CITY", "STABBR"]
+USERNAME = 'usr'
+PASSWORD = ''
 
 def convert(x):
     try:
@@ -54,7 +56,7 @@ def scanIn(filename, dynAttrs, staticAttrs = None):
         return dynData
 
 def loadLocations(data):
-    cnx = mysql.connector.connect(user='usr', password='',
+    cnx = mysql.connector.connect(user=USERNAME, password=PASSWORD,
             host='127.0.0.1', database="MCM")
     cursor = cnx.cursor()
     for d in data:
@@ -70,7 +72,7 @@ def loadLocations(data):
     cnx.close()
 
 def loadSchools(data):
-    cnx = mysql.connector.connect(user='usr', password='',
+    cnx = mysql.connector.connect(user=USERNAME, password=PASSWORD,
             host='127.0.0.1', database="MCM")
     cursor = cnx.cursor()
     for d in data:
@@ -93,7 +95,7 @@ def loadSchools(data):
     cnx.close()
 
 def loadTimeSlices(data, year):
-    cnx = mysql.connector.connect(user='usr', password='',
+    cnx = mysql.connector.connect(user=USERNAME, password=PASSWORD,
             host='127.0.0.1', database="MCM")
     cursor = cnx.cursor()
     counter = 0
@@ -121,7 +123,7 @@ def loadTimeSlices(data, year):
     print str(counter), "schools not matched."
 
 def loadDonations(data):
-    cnx = mysql.connector.connect(user='usr', password='',
+    cnx = mysql.connector.connect(user=USERNAME, password=PASSWORD,
             host='127.0.0.1', database="MCM")
     cursor = cnx.cursor()
     for d in data:
@@ -153,9 +155,7 @@ def loadAll():
     for yr in range(1996, 2013):
          dyn = scanIn("CollegeScorecard_Raw_Data/MERGED" + str(yr) 
                 + "_PP.csv", readSuitable())
-         loadTimeSlices(dyn, yr)
-    
-
+         loadTimeSlices(dyn, yr) 
     
 if __name__ == '__main__':
     loadAll()
