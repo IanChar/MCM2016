@@ -72,7 +72,7 @@ CREATE table Donation (
     loc_id      INT,
     start_year  INT,
     end_year    INT,
-    amount      DECIMAL(7, 2),
+    amount      DECIMAL(11, 2),
     primary key (grant_id),
     foreign key (unit_id) references School (unit_id) on delete cascade,
     foreign key (loc_id) references Location (loc_id) on delete cascade

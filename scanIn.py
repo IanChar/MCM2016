@@ -96,22 +96,29 @@ def loadTimeSlices(data, year):
     cnx = mysql.connector.connect(user='usr', password='',
             host='127.0.0.1', database="MCM")
     cursor = cnx.cursor()
+    counter = 0
     for d in data:
-        tmp_str = ",".join(["%s" for _ in range(39)])
-        d.append(year)
-        insert = ("INSERT IGNORE INTO TimeSlice"
-                "(unit_id, ug, ug_nra, ug_unkn, ug_whitenh, ug_blacknh,"
-                " ug_api, ug_aianold, ug_hispold, tuition_in, tuition_out,"
-                " tuitfte, inexpfte, d150_l4, yr2cmp, yr2wdr, fyr2cmp,"
-                " fyr2wdr, yr3cmp, yr3wdr, yr4cmp, yr4wdr, findep, frstgen,"
-                " parms, parhs, parps, indavg, depavg, debtgrad, debtngrad,"
-                " debtdep, debtind, debtfem, debtmal, debtfrst, debtnfrst,"
-                " repaydebt, year)"
-                "VALUES (" + tmp_str + ")")
-        cursor.execute(insert, tuple(d))
+        check = ("SELECT COUNT(*) FROM School WHERE unit_id=%s")
+        cursor.execute(check, tuple([d[0]]))
+        if cursor.fetchone()[0] == 0:
+            counter += 1
+        else:
+            tmp_str = ",".join(["%s" for _ in range(39)])
+            d.append(year)
+            insert = ("INSERT IGNORE INTO TimeSlice"
+                    "(unit_id, ug, ug_nra, ug_unkn, ug_whitenh, ug_blacknh,"
+                    " ug_api, ug_aianold, ug_hispold, tuition_in, tuition_out,"
+                    " tuitfte, inexpfte, d150_l4, yr2cmp, yr2wdr, fyr2cmp,"
+                    " fyr2wdr, yr3cmp, yr3wdr, yr4cmp, yr4wdr, findep, frstgen,"
+                    " parms, parhs, parps, indavg, depavg, debtgrad, debtngrad,"
+                    " debtdep, debtind, debtfem, debtmal, debtfrst, debtnfrst,"
+                    " repaydebt, year)"
+                    "VALUES (" + tmp_str + ")")
+            cursor.execute(insert, tuple(d))
     cnx.commit()
     cursor.close()
     cnx.close()
+    print str(counter), "schools not matched."
 
 def loadDonations(data):
     cnx = mysql.connector.connect(user='usr', password='',
@@ -151,11 +158,4 @@ def loadAll():
 
     
 if __name__ == '__main__':
-    dyn, stat = scanIn("CollegeScorecard_Raw_Data/MERGED2013_PP.csv",
-            readSuitable(), STATIC_ATTRS) 
-    # loadLocations(stat)
-    # loadSchools(stat)
-    # loadTimeSlices(dyn, 2008)
-    l = Lumina()
-    loadDonations(l.findGrants())
-
+    loadAll()
