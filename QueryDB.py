@@ -30,6 +30,22 @@ def getDonatedSchools(yearRange = 5):
     cnx.close()
     return res
 
+def getAllRecent():
+    cnx = mysql.connector.connect(user=USERNAME, password=PASSWORD,
+            host="127.0.0.1", database="MCM")
+    cursor = cnx.cursor()
+    query = ("SELECT * FROM School NATURAL JOIN"
+            " (SELECT * FROM TimeSlice WHERE year=2013) AS time")
+    cursor.execute(query)
+    res = {}
+    for c in cursor:
+        res[c[1]] = c[4:-1]
+    cursor.close()
+    cnx.close()
+    return res
+
 if __name__ == '__main__':
     res = getDonatedSchools()
-    print map(lambda x: x[GRAD_4YR], res['Harvard University'][1])
+    # print map(lambda x: x[GRAD_4YR], res['Harvard University'][1])
+    al = getAllRecent()
+    print al['Harvard University']
