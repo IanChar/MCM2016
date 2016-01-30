@@ -50,7 +50,7 @@ def printDescrips(keys):
         print k, ": ", msg
 
 if __name__=='__main__':
-    attr, data = scanInData('CollegeScorecard_Raw_Data/cohorts.csv', 1000)
+    attr, data = scanInData('CollegeScorecard_Raw_Data/MERGED2000_PP.csv', 1000)
     suitable = findSuitable(data)
     results = [attr[s] for s in suitable]
     printDescrips(results)

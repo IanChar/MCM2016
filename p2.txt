@@ -1,0 +1,140 @@
+UNITID :  Unit ID for institution
+OPEID :  8-digit OPE ID for institution
+opeid6 :  6-digit OPE ID for institution
+ZIP :  ZIP code
+sch_deg :  Predominant degree awarded (recoded 0s and 4s)
+PREDDEG :  4        Entirely graduate-degree granting"
+HIGHDEG :  4        Graduate degree"
+CONTROL :  Control of institution
+st_fips :  FIPS code for state
+region :  Region (IPEDS)
+PCIP52 :  NOT FOUND
+UG :  Enrollment of all undergraduate students
+UG_NRA :  Total share of enrollment of undergraduate students who are non-resident aliens
+UG_UNKN :  Total share of enrollment of undergraduate students whose race is unknown
+UG_WHITENH :  Total share of enrollment of undergraduate students who are white non-Hispanic
+UG_BLACKNH :  Total share of enrollment of undergraduate students who are black non-Hispanic
+UG_API :  Total share of enrollment of undergraduate students who are Asian/Pacific Islander
+UG_AIANOld :  Total share of enrollment of undergraduate students who are American Indian/Alaska Native
+UG_HISPOld :  Total share of enrollment of undergraduate students who are Hispanic
+PPTUG_EF2 :  NOT FOUND
+TUITIONFEE_IN :  In-state tuition and fees
+TUITIONFEE_OUT :  Out-of-state tuition and fees
+TUITFTE :  Net tuition revenue per full-time equivalent student
+INEXPFTE :  Instructional expenditures per full-time equivalent student
+D150_L4 :  Adjusted cohort count for completion rate at less-than-four-year institutions (denominator of completion rate)
+CDR2 :  Two-year cohort default rate
+COMP_ORIG_YR2_RT :  Percent completed within 2 years at original institution
+WDRAW_ORIG_YR2_RT :  Percent withdrawn from original institution within 2 years 
+ENRL_ORIG_YR2_RT :  Percent still enrolled at original institution within 2 years 
+UNKN_ORIG_YR2_RT :  Percent with status unknown within 2 years at original institution
+LO_INC_WDRAW_ORIG_YR2_RT :  NOT FOUND
+LO_INC_UNKN_ORIG_YR2_RT :  NOT FOUND
+FEMALE_WDRAW_ORIG_YR2_RT :  Percent of female students withdrawn from original institution within 2 years 
+FEMALE_ENRL_ORIG_YR2_RT :  Percent of female students who were still enrolled at original institution within 2 years 
+FEMALE_UNKN_ORIG_YR2_RT :  Percent of female students with status unknown within 2 years at original institution
+NOT1STGEN_WDRAW_ORIG_YR2_RT :  Percent of not-first-generation students withdrawn from original institution within 2 years 
+NOT1STGEN_ENRL_ORIG_YR2_RT :  Percent of not-first-generation students who were still enrolled at original institution within 2 years 
+COMP_ORIG_YR3_RT :  Percent completed within 3 years at original institution
+WDRAW_ORIG_YR3_RT :  Percent withdrawn from original institution within 3 years
+ENRL_ORIG_YR3_RT :  Percent still enrolled at original institution within 3 years
+UNKN_ORIG_YR3_RT :  Percent with status unknown within 3 years at original institution
+FEMALE_WDRAW_ORIG_YR3_RT :  Percent of female students withdrawn from original institution within 3 years
+COMP_ORIG_YR4_RT :  Percent completed within 4 years at original institution
+WDRAW_ORIG_YR4_RT :  Percent withdrawn from original institution within 4 years
+UNKN_ORIG_YR4_RT :  Percent with status unknown within 4 years at original institution
+FEMALE_UNKN_ORIG_YR4_RT :  Percent of female students with status unknown within 4 years at original institution
+DEP_STAT_PCT_IND :  Percentage of students who are financially independent
+DEP_INC_PCT_LO :  NOT FOUND
+IND_INC_PCT_LO :  NOT FOUND
+PAR_ED_PCT_1STGEN :  Percentage first-generation students
+PAR_ED_PCT_MS :  Percent of students whose parents' highest educational level is middle school
+PAR_ED_PCT_HS :  Percent of students whose parents' highest educational level is high school
+PAR_ED_PCT_PS :  Percent of students whose parents' highest educational level was is some form of postsecondary education
+APPL_SCH_PCT_GE2 :  Number of applications is greater than or equal to 2
+APPL_SCH_PCT_GE3 :  Number of applications is greater than or equal to 3
+DEP_INC_AVG :  Average family income of dependent students in real 2014 dollars.
+IND_INC_AVG :  Average family income of independent students in real 2014 dollars. 
+OVERALL_YR2_N :  Number of students completed in overall 2-year completion cohort
+LO_INC_YR2_N :  NOT FOUND
+MD_INC_YR2_N :  NOT FOUND
+DEP_YR2_N :  Number of dependent students in overall 2-year completion cohort
+IND_YR2_N :  Number of independent students in overall 2-year completion cohort
+FEMALE_YR2_N :  Number of female students in overall 2-year completion cohort
+MALE_YR2_N :  Number of male students in overall 2-year completion cohort
+PELL_YR2_N :  Number of Pell students in overall 2-year completion cohort
+NOPELL_YR2_N :  Number of no-Pell students in overall 2-year completion cohort
+LOAN_YR2_N :  Number of loan students in overall 2-year completion cohort
+NOLOAN_YR2_N :  Number of no-loan students in overall 2-year completion cohort
+FIRSTGEN_YR2_N :  Number of first-generation students in overall 2-year completion cohort
+NOT1STGEN_YR2_N :  Number of not-first-generation students in overall 2-year completion cohort
+OVERALL_YR3_N :  Number of students in overall 3-year completion cohort
+LO_INC_YR3_N :  NOT FOUND
+MD_INC_YR3_N :  NOT FOUND
+IND_YR3_N :  Number of independent students in overall 3-year completion cohort
+FEMALE_YR3_N :  Number of female students in overall 3-year completion cohort
+MALE_YR3_N :  Number of male students in overall 3-year completion cohort
+PELL_YR3_N :  Number of Pell students in overall 3-year completion cohort
+NOPELL_YR3_N :  Number of no-Pell students in overall 3-year completion cohort
+LOAN_YR3_N :  Number of loan students in overall 3-year completion cohort
+NOLOAN_YR3_N :  Number of no-loan students in overall 3-year completion cohort
+FIRSTGEN_YR3_N :  Number of first-generation students in overall 3-year completion cohort
+NOT1STGEN_YR3_N :  Number of not-first-generation students in overall 3-year completion cohort
+OVERALL_YR4_N :  Number of students in overall 4-year completion cohort
+LO_INC_YR4_N :  NOT FOUND
+MD_INC_YR4_N :  NOT FOUND
+DEP_YR4_N :  Number of dependent students in overall 4-year completion cohort
+IND_YR4_N :  Number of independent students in overall 4-year completion cohort
+FEMALE_YR4_N :  Number of female students in overall 4-year completion cohort
+MALE_YR4_N :  Number of male students in overall 4-year completion cohort
+PELL_YR4_N :  Number of Pell students in overall 4-year completion cohort
+NOPELL_YR4_N :  Number of no-Pell students in overall 4-year completion cohort
+LOAN_YR4_N :  Number of loan students in overall 4-year completion cohort
+NOLOAN_YR4_N :  Number of no-loan students in overall 4-year completion cohort
+FIRSTGEN_YR4_N :  Number of first-generation students in overall 4-year completion cohort
+NOT1STGEN_YR4_N :  Number of not-first-generation students in overall 4-year completion cohort
+DEBT_MDN :  The original amount of the loan principal upon entering repayment
+GRAD_DEBT_MDN :  The median debt for students who have completed
+WDRAW_DEBT_MDN :  The median debt for students who have not completed
+LO_INC_DEBT_MDN :  NOT FOUND
+MD_INC_DEBT_MDN :  NOT FOUND
+DEP_DEBT_MDN :  The median debt for dependent students
+IND_DEBT_MDN :  The median debt for independent students
+PELL_DEBT_MDN :  The median debt for Pell students
+NOPELL_DEBT_MDN :  The median debt for no-Pell students
+FEMALE_DEBT_MDN :  The median debt for female students
+MALE_DEBT_MDN :  The median debt for male students
+FIRSTGEN_DEBT_MDN :  The median debt for first-generation students
+NOTFIRSTGEN_DEBT_MDN :  The median debt for not-first-generation students
+DEBT_N :  The number of students in the median debt cohort
+GRAD_DEBT_N :  The number of students in the median debt completers cohort
+WDRAW_DEBT_N :  The number of students in the median debt withdrawn cohort
+LO_INC_DEBT_N :  NOT FOUND
+MD_INC_DEBT_N :  NOT FOUND
+DEP_DEBT_N :  The number of students in the median debt dependent students cohort
+IND_DEBT_N :  The number of students in the median debt independent students cohort
+PELL_DEBT_N :  The number of students in the median debt Pell students cohort
+NOPELL_DEBT_N :  The number of students in the median debt no-Pell students cohort
+FEMALE_DEBT_N :  The number of students in the median debt female students cohort
+MALE_DEBT_N :  The number of students in the median debt male students cohort
+FIRSTGEN_DEBT_N :  The number of students in the median debt first-generation students cohort
+NOTFIRSTGEN_DEBT_N :  The number of students in the median debt not-first-generation students cohort
+GRAD_DEBT_MDN10YR :  Median loan debt of completers in monthly payments (10-year amortization plan)
+CUML_DEBT_N :  Number of students in the cumulative loan debt cohort
+CUML_DEBT_P90 :  Cumulative loan debt at the 90th percentile
+CUML_DEBT_P75 :  Cumulative loan debt at the 75th percentile
+CUML_DEBT_P25 :  Cumulative loan debt at the 25th percentile
+CUML_DEBT_P10 :  Cumulative loan debt at the 10th percentile
+INC_N :  Number of students in the family income cohort
+DEP_INC_N :  Number of students in the family income dependent students cohort
+IND_INC_N :  Number of students in the family income independent students cohort
+DEP_STAT_N :  Number of students in the disaggregation with valid dependency status
+PAR_ED_N :  Number of students in the parents' education level cohort
+APPL_SCH_N :  Number of students in the FAFSA applications cohort
+REPAY_DT_MDN :  Median Date Student Enters Repayment
+SEPAR_DT_MDN :  Median Date Student Separated
+REPAY_DT_N :  Number of students in the cohort for date students enter repayment
+SEPAR_DT_N :  Number of students in the cohort for date students separated from the school
+DEBT_MDN_SUPP :  NOT FOUND
+GRAD_DEBT_MDN_SUPP :  NOT FOUND
+GRAD_DEBT_MDN10YR_SUPP :  NOT FOUND
