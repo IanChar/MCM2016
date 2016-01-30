@@ -1,7 +1,7 @@
 import mysql.connector
 
-USERNAME = 'usr'
-PASSWORD = ''
+USERNAME = 'root'
+PASSWORD = '890iop'
 GRAD_2YR = 13
 GRAD_3YR = 17
 GRAD_4YR = 19

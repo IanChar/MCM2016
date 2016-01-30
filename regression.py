@@ -18,7 +18,6 @@ class Regression:
         for item in dictionary:
             name = item[0]
             amount = int(item[1][0])
-
             del item[1][1][0]
 
             for year in item[1][1]:
@@ -65,8 +64,8 @@ class Regression:
 
         for donation in donations:
             self.data[donation[0]][1][0].pop()
-            pastGrantYear = self.data[donation[0]][1][0] + donation[2:5]
-            currentYear = list(fullDict[donation[0]]) + [-1, -1, -1]
+            pastGrantYear = self.data[donation[0]][1][0] + donation[1:5]
+            currentYear = list(fullDict[donation[0]]) + [-1, -1, -1, -1]
 
             m.append(pastGrantYear)
             m.append(currentYear)
@@ -77,8 +76,9 @@ class Regression:
 
         for key, value in fullDict.items():
             if key not in set(checked):
-                m.append(list(value) + [-1, -1, -1])
+                m.append(list(value) + [-1, -1, -1, -1])
 
+        print m
         sio.savemat('BooIsAFuckBoiii.mat', {'a_dict': np.matrix(m)})
 
 if __name__ == "__main__":
