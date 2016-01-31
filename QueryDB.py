@@ -5,9 +5,9 @@ USERNAME = 'usr'
 PASSWORD = ''
 
 # COEFS FOR DONATED SCHOOLS ONLYYYYYY
-GRAD_2YR = 13
-GRAD_3YR = 17
-GRAD_4YR = 19
+GRAD_2YR = 21 # Financially Dep Students
+GRAD_3YR = 23 # Parents with middle school
+GRAD_4YR = 24 # Parents with high school
 FIRST_GEN = 22
 
 def getDonatedSchools(yearRange = 5):
@@ -107,8 +107,8 @@ MESSAGES = ["Undergraduates:", "Undergraduate (non-resident aliens:",
         "Percent of Parents With Middle School (highest degree):",
         "Percent of Parents with High School (highest degree):",
         "Percent of Parents with Post-Secondary:",
-        "Avg Family Income of Independents:",
         "Avg Family Income of Dependents:",
+        "Avg Family Income of Independents:",
         "Median Debt of Students who Graduated:",
         "Median Debt of Students who Didn't Graduate:",
         "Median Debt of Dependent Students:",
@@ -120,4 +120,5 @@ MESSAGES = ["Undergraduates:", "Undergraduate (non-resident aliens:",
 
 if __name__ == '__main__':
     reg = regression.Regression(getDonatedSchools())
-    getSummarySheet(reg.rankWinners(lambda x:float(x[4]))[:10])
+    judge = lambda x: sum(map(float, x[1:]))
+    getSummarySheet(reg.rankWinners(judge)[:5], True)
