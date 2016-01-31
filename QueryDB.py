@@ -7,6 +7,7 @@ PASSWORD = ''
 GRAD_2YR = 13
 GRAD_3YR = 17
 GRAD_4YR = 19
+FIRST_GEN = 22
 
 def getDonatedSchools(yearRange = 5):
     cnx = mysql.connector.connect(user=USERNAME, password=PASSWORD,
