@@ -1,4 +1,5 @@
 import mysql.connector
+import regression
 
 USERNAME = 'usr'
 PASSWORD = ''
@@ -118,4 +119,5 @@ MESSAGES = ["Undergraduates:", "Undergraduate (non-resident aliens:",
         "Median Debt of Non-first Generation Students:"]
 
 if __name__ == '__main__':
-    getSummarySheet([("Harvard University", 0.3), ("University of Colorado Boulder", 0.6)], True)
+    reg = regression.Regression(getDonatedSchools())
+    getSummarySheet(reg.rankWinners(lambda x:float(x[4]))[:10])

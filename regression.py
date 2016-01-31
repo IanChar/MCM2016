@@ -4,8 +4,6 @@ import QueryDB as q
 import scipy.io as sio
 import json
 import findInDict as fd
-import sklearn.datasets as d
-import sklearn.cluster as s
 
 from scipy import stats
 
@@ -87,7 +85,7 @@ class Regression:
             spectralm.append(self.data[donation[0]][1][0])
             spectralm.append(list(fullDict[donation[0]]))
 
-            donationDictReverse[count] = donation[0]
+            donationDict[count] = donation[0]
             donationDictReverse[count + 1] = donation[0]
             donationDict[donation[0]] = (count, count + 1)
             checked.append(donation[0])
@@ -113,15 +111,10 @@ class Regression:
         return spectralm
 
     def findData(self):
-
         text_file = open("NewPredictedData.mat", "r")
         totalCoeff = []
         ranking = []
-        count = 0
-
-        
-
-
+        count = 0 
         m = [line.rstrip('\n').split(",") for line in text_file]
 
         for coeff in m:
@@ -147,6 +140,24 @@ class Regression:
                 print i
                 count = count + 1
 
+    def rankWinners(self, judgement, decFunc = (lambda x: x)):
+        text_file = open("NewPredictedData.mat", "r")
+        computed_mat = [line.rstrip('\n').split(",") for line in text_file]
+        text_file.close()
+
+        translated_mat = []
+        for index, r in enumerate(computed_mat):
+            if index < 76:
+                if index % 2 != 0:
+                    translated_mat.append((fd.findRow(str(index)),
+                        map(decFunc, r)))
+            else:
+                translated_mat.append((fd.findRow(str(index)),r))
+
+        ranking = sorted(translated_mat, key=lambda s: judgement(s[1]))
+        ranking = map(lambda x: (x[0], judgement(x[1])), ranking)
+        return ranking[::-1]
+
     def spectralClustering(self):
         S = s.SpectralClustering(n_clusters=2, gamma=1.0, \
                             affinity='rbf', n_neighbors=10, assign_labels='kmeans')
@@ -161,7 +172,6 @@ class Regression:
         print S.fit_predict(X)
 
 if __name__ == "__main__":
-
     R = Regression(q.getDonatedSchools())
-    R.findData()
+    print R.rankWinners(lambda x: x[4])
     #R.spectralClustering()
