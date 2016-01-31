@@ -28,8 +28,6 @@ class Regression:
                 year[-1] = int(year[-1])
 
             twoYear = [x for x in item[1][1] if x[q.GRAD_2YR] != -1]
-            for x in twoYear:
-                x[q.GRAD_2YR] = 1 - float(x[q.GRAD_2YR])
             threeYear = [x for x in item[1][1] if x[q.GRAD_3YR] != -1]
             fourYear = [x for x in item[1][1] if x[q.GRAD_4YR] != -1]
             firstGen = [x for x in item[1][1] if x[q.FIRST_GEN] != -1]
@@ -143,7 +141,7 @@ class Regression:
                 count = count + 1
 
     def rankWinners(self, judgement, decFunc = (lambda x: x)):
-        text_file = open("NewDataPredict1.mat", "r")
+        text_file = open("NewDataPredict3.mat", "r")
         computed_mat = [line.rstrip('\n').split(",") for line in text_file]
         text_file.close()
 
