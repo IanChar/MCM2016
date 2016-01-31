@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import QueryDB as q
 import scipy.io as sio
 import json
+import sklearn.clustering as SpectralClustering
 
 from scipy import stats
 
@@ -61,7 +62,7 @@ class Regression:
     def constructMatrix(self, donations):
         fullDict = q.getAllRecent()
         donationDict = {}
-
+        donationDictReverse = {}
         count = 0
         checked = []
         m = []
@@ -73,23 +74,34 @@ class Regression:
 
             m.append(pastGrantYear)
             m.append(currentYear)
-
-            donationDict[donation[0]] = (count, count+1)
+            donationDictReverse[count] = donation[0]
+            donationDictReverse[count + 1] = donation[0]
+            donationDict[donation[0]] = (count, count + 1)
             checked.append(donation[0])
             count = count + 2
 
         print count
-        
+
         for key, value in fullDict.items():
             if key not in set(checked):
                 m.append(list(value) + [COVER, COVER, COVER, COVER])
                 donationDict[key] = (count)
+                donationDictReverse[count] = key
                 count = count + 1
 
 
         sio.savemat('data.mat', {'a_dict': np.matrix(m)})
         with open('dict.json', 'w') as fp:
             json.dump(donationDict, fp)
+        with open('dictReverse.json', 'w') as fp:
+            json.dump(donationDictReverse, fp)
+
+
+    def spectralClustering(self):
+        S = SpectralClustering(n_clusters=8, eigen_solver=None, gamma=1.0, \
+                            affinity='rbf', n_neighbors=10, assign_labels='kmeans')
+
+
 
 if __name__ == "__main__":
 
